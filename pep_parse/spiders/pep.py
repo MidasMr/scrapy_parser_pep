@@ -1,13 +1,18 @@
+import re
+
 import scrapy
 
-from constants import PATTERN
 from ..items import PepParseItem
+
+
+PATTERN = re.compile(r'^PEP\s(?P<number>\d+)\s[–]\s(?P<name>.*)')
+PEP_URL = 'peps.python.org'
 
 
 class PepSpider(scrapy.Spider):
     name = 'pep'
-    allowed_domains = ['peps.python.org']
-    start_urls = ['https://peps.python.org/']
+    allowed_domains = [PEP_URL]
+    start_urls = [f'https://{PEP_URL}/']
 
     def parse(self, response):
         all_peps = response.css(
