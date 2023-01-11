@@ -33,9 +33,10 @@ Linux, Mac OS
 source venv/bin/activate
 ```
 
-```
+
 Обновить pip до последней версии
 
+```
 python -m pip install --upgrade pip
 ```
 
